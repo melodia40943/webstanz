@@ -25,13 +25,19 @@ $color-secondary: #EA526F;
 $color-accent: #FFF;
 
 @mixin hover($color) {
-   @if( hue($color) < 180 ){
+   @if( hue($color) < 180 ){ 
+    $color: fade-in($color, .5);
     $color: adjust-hue($color, 30);
+   
    }
    @else{
-    $color: adjust-hue($color, -60);
+    $color: fade-in($color, .5); 
+    $color: adjust-hue($color, 60);
+    
    }
+   background-color: $color;
  }
+
 @mixin heading-shadow($color: $color-primary, $size: 0.2rem){
     @if ( lightness($color) < 25% ) {
         $color: lighten($color, 10%);
@@ -50,11 +56,11 @@ $color-accent: #FFF;
   font-weight: 900;
   font-style: italic;
   color: $color-accent;
-  background: $color-secondary;
+  background: $color-primary;
   
   &:hover{
       @include heading-shadow($color-secondary);
-      @include hover($color-primary);
+      @include hover($color-secondary);
       font-size: 3rem;
     }
 }

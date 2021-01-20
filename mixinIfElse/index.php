@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Pt02 Ch02 Exercise 200</title>
 </head>
 <body>
-    <h1>je suis bête, mais au final ça fonctionne</h1>
+  <div class="container">
+    <div class="btn text-shadow">Survole-moi !!!</div>
+  </div>
+    <h1>Ca fonctionne</h1>
     <?php
     echo "en php aussi";
      ?>

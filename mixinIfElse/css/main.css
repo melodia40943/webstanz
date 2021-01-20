@@ -25,7 +25,8 @@ html, body {
   font-weight: 900;
   font-style: italic;
   color: #FFF;
-  background: #EA526F; }
+  background: #15DEA5; }
   .btn:hover {
     text-shadow: 0.2rem 0.2rem #e42549;
+    background-color: #eacd52;
     font-size: 3rem; }
