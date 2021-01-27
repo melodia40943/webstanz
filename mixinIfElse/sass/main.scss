@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,900i');
+
+@import "./utils/variable";
+
 html, body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
@@ -12,17 +15,36 @@ html, body {
   box-sizing: border-box;
 }
 
-.container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+@for $i from 1 to 5 {
+  .m-#{$i}{
+    margin:($i *0.5rem) 0 ;
+  }
+  
 }
 
 
-$color-primary: #15DEA5;
-$color-secondary: #EA526F;
-$color-accent: #FFF;
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-color{
+  color:#EA526F;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+@function fct-heading-shadow($color){
+  @if ( lightness($color) < 25% ) {
+      @return lighten($color, 10%);
+  }@else{
+      @return darken($color, 10%);
+  }
+  
+}
 
 @mixin hover($color) {
    @if( hue($color) < 180 ){ 
@@ -38,14 +60,36 @@ $color-accent: #FFF;
    background-color: $color;
  }
 
-@mixin heading-shadow($color: $color-primary, $size: 0.2rem){
-    @if ( lightness($color) < 25% ) {
-        $color: lighten($color, 10%);
-    }@else{
-        $color: darken($color, 10%);
-    }
-    text-shadow: $size $size $color;
+@mixin heading-shadow($color: fct-heading-shadow($color-name)){
+  text-shadow: 0.5rem 0.5rem $color;
+
+}
+
+@mixin txt-input-palette($state) {
+  $palette: map-get($txt-input-palette, $state);
+  border: .1rem solid map-get($palette, border);
+  background-color: map-get($palette, bg);
+  color: map-get($palette, txt);
+}
+
+@mixin txt-input-palette($palettes) {
+  @each $state, $palette in $palettes{
+      &:#{$state}{
+        border: .1rem solid map-get($palette, border);
+        background-color: map-get($palette, bg);
+        color: map-get($palette, txt);
+      }
   }
+}
+
+.form {
+  &__field {
+      & input {
+        @include txt-input-palette($txt-input-palette);
+      }
+  }
+}
+
 
 .btn {
   cursor: pointer;
@@ -61,6 +105,21 @@ $color-accent: #FFF;
   &:hover{
       @include heading-shadow($color-secondary);
       @include hover($color-secondary);
+      color: $color-secondary;
       font-size: 3rem;
     }
+}
+div{
+  p{
+    background-color: #15DEA5;
+    font-size: map-get($mesValeursMap,petit)
+  }
+}
+h1{
+  @extend .text-color;
+  font-size: nth($mesValeurs,2);
+}
+
+h2{
+  @extend .text-color;
 }

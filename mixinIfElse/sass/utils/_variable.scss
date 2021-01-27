@@ -1,0 +1,30 @@
+$color-primary: #15DEA5;
+$color-secondary: #EA526F;
+$color-accent: #FFF;
+$color-white:#fafafa;
+$color-invalid:#e91b1b;
+
+$mesValeurs: 1rem 2rem 3rem 4rem;
+
+$mesValeursMap:(petit:0.5rem, moyen:2rem, grand:3rem, xl:4rem);
+
+$txt-input-palette: (
+  active: (
+      bg: $color-primary,
+      border: $color-primary,
+      txt: $color-white,
+
+   ),
+  focus: (
+      bg: $color-primary,
+      border: $color-primary,
+      txt: $color-white,
+  ),
+  invalid: (
+      bg: $color-invalid,
+      border: $color-white,
+      txt: $color-white,
+  )
+);
+
+
